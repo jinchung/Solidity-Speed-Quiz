@@ -10,6 +10,11 @@ contract Bytes {
         // if z = 4, return bytes 0x00010203
         // ...
         // etc
+        bytes memory result;
+        for (uint8 i = 0; i < z; i++) {
+          result = bytes.concat(result, bytes1(i));
 
+        }
+        return result;
    }
 }
