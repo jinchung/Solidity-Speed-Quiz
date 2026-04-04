@@ -6,5 +6,7 @@ contract IsFirstBitSet {
         // return true if the first bit is set
         // for example 0x000....0001 returns true
         // for example 0x000....0010 returns false
+        bytes32 mask = bytes32(uint256(1));
+        return (x & mask) == mask;
     }
 }
