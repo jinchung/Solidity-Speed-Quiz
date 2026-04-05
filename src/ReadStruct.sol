@@ -20,5 +20,8 @@ contract ReadStruct {
         // in reversed order, i.e. x is y and y is x
         // do not redeclare the struct in this contract or 
         // reference it in ViewContract
+        (uint256 origX, uint256 origY) = ViewContract(a).s();
+        x = origY;
+        y = origX;
     }
 }
