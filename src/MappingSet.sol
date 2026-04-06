@@ -3,9 +3,16 @@ pragma solidity 0.8.28;
 
 library StorageSetLib {
 
-    // implement the function increment(...)
-    // it should increment the value at key 3
-    // implement increment3(...)
+  // implement the function increment(...)
+  // it should increment the value at key 3
+  // implement increment3(...)
+  function increment(mapping(uint256 => uint256) storage m, uint256 key) internal {
+    m[key] += 1;
+  }
+
+  function increment3(mapping(uint256 => uint256) storage m) public {
+    increment(m, 3);
+  }
 }
 
 
@@ -16,6 +23,6 @@ contract MappingSet {
     using StorageSetLib for mapping(uint256 => uint256);
 
     function main() public {
-        //m.increment3();
+        m.increment3();
     }
 }
