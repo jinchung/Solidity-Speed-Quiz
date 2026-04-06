@@ -7,6 +7,8 @@ contract LowLevel {
         // do not use an interface, use a low level call
         // return true if the call succeeded
         // return false if the call failed
+        (bool ok, ) = a.call(abi.encodeWithSignature("foo()"));
+        return ok;
 
         // bonus challenge: use an interface and a high level call to accomplish the same task
 
