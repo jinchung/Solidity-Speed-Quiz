@@ -12,7 +12,10 @@ contract LowLevelStruct {
         // }
         // return the two fields
         // revert if the low level call reverts
-
+        (bool ok, bytes memory data) = a.call(abi.encodeWithSignature("point()"));
+        require(ok, "merp");
+        (x, y) = abi.decode(data, (uint256, uint256));
         // bonus challenge: use an interface and a high level call to accomplish the same task
+
     }
 }   
