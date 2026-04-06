@@ -20,5 +20,7 @@ contract AccountMaker {
         // use create2 to create an account with the owner address
         // the salt should be the owner address
         // the value sent to them should be msg.value
+        bytes32 _salt = bytes32(bytes20(uint160(owner)));
+        return address(new Account2{salt: _salt, value: msg.value}(owner));
     }
 }
