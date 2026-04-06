@@ -8,6 +8,9 @@ contract YourContract {
     function main(address target, address forwarder) public {
         // make the right function call such that YourContract gets 100 tokens
         // you may only modify this function
+        bytes memory data = abi.encodeWithSignature("giveTokens(address)", address(this));
+        Forwarder forwarderContract = Forwarder(forwarder);
+        forwarderContract.forward(target, data);
     }
 }
 
