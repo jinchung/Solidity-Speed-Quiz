@@ -6,6 +6,9 @@ contract LowLevelReturnUint {
         // call function "bar()" on address a
         // do not use an interface
         // return the return value of the call
+        (bool ok, bytes memory data) = a.call(abi.encodeWithSignature("bar()"));
+        require(ok, "merp");
+        return abi.decode(data, (uint256));
 
         // bonus challenge: use an interface and a high level call to accomplish the same task
     }
