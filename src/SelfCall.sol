@@ -8,6 +8,7 @@ contract SelfCall {
         // call me() on this contract
         // think outside the box! You can only write code here, no creating external contracts
         // or modifying other parts of this contract
+        this.me();
     }
 
     function me() external {
